@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import styled from "styled-components";
 
-const ProfileForm = () => {
+const Title = styled.h3`
+  color: green;
+  text-align: center;
+  margin-top: 10%;
+  font-weight: 300;
+`;
+
+const ProfileForm = props => {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -19,11 +27,21 @@ const ProfileForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(userInfo);
+    props.addPerson(userInfo);
+    setUserInfo({
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      street: "",
+      city: "",
+      state: "",
+      zipCode: ""
+    });
   };
 
   return (
     <div>
-      <h3>Great ! You signed up... Now lets get your profile setup.</h3>
+      <Title>Great ! You signed up... Now lets get your profile setup.</Title>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="firstName">First Name</Label>
