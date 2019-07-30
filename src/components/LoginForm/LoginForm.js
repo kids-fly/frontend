@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import './LoginForm.css';
 import {Link} from 'react-router-dom';
+import {login} from '../../actions/Login';
 
-function LoginForm() {
+function LoginForm(props) {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -18,13 +20,14 @@ function LoginForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    props.login(formState);
   };
 
   return (
     <div className='container login-form'>
       <h2 className='dipslay-4 text-center py-5'>Enter your Login Information</h2>
       <form onSubmit={handleSubmit}>
-        <div class='form-group'>
+        <div className='form-group'>
           <label>Name</label>
           <input
             type='text'
@@ -36,18 +39,7 @@ function LoginForm() {
             autoComplete='off'
           />
         </div>
-        <div className='form-group'>
-          <label>Email address</label>
-          <input
-            type='email'
-            className='form-control'
-            value={formState.email}
-            onChange={handleChange}
-            placeholder='Enter email'
-            name='email'
-            autoComplete='off'
-          />
-        </div>
+
         <div className='form-group'>
           <label>Password</label>
           <input
@@ -75,4 +67,7 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default connect(
+  null,
+  {login}
+)(LoginForm);

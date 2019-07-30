@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import './SignUpForm.css';
 import {Link} from 'react-router-dom';
 
-function SignUpForm() {
+import {addUser} from '../../actions/Signup';
+
+function SignUpForm(props) {
   const [formState, setFormState] = useState({
-    name: '',
-    email: '',
+    username: '',
     password: ''
   });
 
@@ -16,38 +18,28 @@ function SignUpForm() {
     });
   };
 
-  const onSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
+    props.addUser(formState).then(() => props.history.push('/'));
   };
 
   return (
     <div className='container login-form'>
       <h2 className='dipslay-4 text-center py-5'>Sign up here</h2>
-      <form>
-        <div class='form-group'>
-          <label>Name</label>
+      <form onSubmit={handleSubmit}>
+        <div className='form-group'>
+          <label>Username</label>
           <input
             type='text'
             className='form-control'
-            value={formState.name}
+            value={formState.username}
             onChange={handleChange}
-            placeholder='Enter name'
-            name='name'
+            placeholder='Enter username'
+            name='username'
             autoComplete='off'
           />
         </div>
-        <div className='form-group'>
-          <label>Email address</label>
-          <input
-            type='email'
-            className='form-control'
-            value={formState.email}
-            onChange={handleChange}
-            placeholder='Enter email'
-            name='email'
-            autoComplete='off'
-          />
-        </div>
+
         <div className='form-group'>
           <label>Password</label>
           <input
@@ -67,7 +59,7 @@ function SignUpForm() {
         <small>
           Already have account{' '}
           <span className='text-danger'>
-            <Link to='/login'>Login</Link>
+            <Link to='/'>Login</Link>
           </span>
         </small>
       </form>
@@ -75,4 +67,7 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default connect(
+  null,
+  {addUser}
+)(SignUpForm);
