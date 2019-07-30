@@ -9,7 +9,8 @@ const Hero = styled.div`
   margin-top: 10px;
   height: 500px;
   width: 100%;
-  background-image: url(${img});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${img});
+  // background-image: url(${img});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -19,8 +20,15 @@ const useStyles = makeStyles({
   text: {
     fontSize: "20px",
     color: "white",
-    paddingTop: "300px",
-    paddingLeft: "10px"
+    paddingTop: "20%",
+    paddingLeft: "10px",
+    letterSpacing: "2px;",
+    fontWeight: 300
+  },
+  btn: {
+    color: "white",
+    background: "green",
+    marginTop: "10px"
   }
 });
 
@@ -32,7 +40,7 @@ const HeroImage = () => {
         <Typography className={classes.text}>
           Our mission is to give parents a pleasant flight experience
         </Typography>
-        <Button>Get Started</Button>
+        <Button className={classes.btn}>Get Started</Button>
       </Hero>
     </div>
   );
