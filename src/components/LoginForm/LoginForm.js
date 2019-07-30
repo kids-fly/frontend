@@ -6,8 +6,7 @@ import {login} from '../../actions/Login';
 
 function LoginForm(props) {
   const [formState, setFormState] = useState({
-    name: '',
-
+    username: '',
     password: ''
   });
 
@@ -20,7 +19,11 @@ function LoginForm(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.login(formState);
+    props.login(formState).then(() => props.history.push('/'));
+    setFormState({
+      username: '',
+      password: ''
+    });
   };
 
   return (
@@ -28,14 +31,14 @@ function LoginForm(props) {
       <h2 className='dipslay-4 text-center py-5'>Enter your Login Information</h2>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
-          <label>Name</label>
+          <label>Username</label>
           <input
             type='text'
             className='form-control'
             value={formState.name}
             onChange={handleChange}
             placeholder='Enter name'
-            name='name'
+            name='username'
             autoComplete='off'
           />
         </div>

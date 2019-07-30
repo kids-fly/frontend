@@ -8,9 +8,9 @@ export const login = user => dispatch => {
     .post('https://kidsflyapi.herokuapp.com/api/auth/login', user)
     .then(res => {
       console.log(res);
-      dispatch({type: LOGIN_SUCCESS, payload: res});
+      dispatch({type: LOGIN_SUCCESS, payload: res.data});
     })
     .catch(err => {
-      console.log(err);
+      dispatch({type: LOGIN_FAILURE, payload: err});
     });
 };

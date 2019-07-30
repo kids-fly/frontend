@@ -21,6 +21,10 @@ function SignUpForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
     props.addUser(formState).then(() => props.history.push('/'));
+    setFormState({
+      username: '',
+      password: ''
+    });
   };
 
   return (
