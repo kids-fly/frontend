@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProfileForm from "./ProfileForm";
 import { Container } from "reactstrap";
-import { Route, Switch } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import UserCard from "./UserCard";
 import uuidv1 from "uuid/v1";
 
@@ -13,17 +13,27 @@ const App = () => {
     setUsers([...users, { ...person, id: id }]);
   };
 
-  console.log(users);
+  console.log("USERS IN USERS ARRAY IN APP JS PASSES TO USERCARD", users);
   return (
     <div>
       <Container>
-        <Switch>
-          <Route
-            exact
-            path="/profile/new"
-            render={props => <ProfileForm {...props} addPerson={addPerson} />}
-          />
-        </Switch>
+        <Route
+          exact
+          path="/profile/new"
+          render={props => (
+            <ProfileForm {...props} addPerson={addPerson} users={users} />
+          )}
+        />
+        <Route
+          path="/edit/:id"
+          render={props => {
+            const foundUser = users.find(
+              user => user.id === props.match.params.id
+            );
+            return <ProfileForm {...props} initialPerson={foundUser} />;
+          }}
+        />
+
         {users.map(user => {
           return (
             <Route
@@ -34,6 +44,7 @@ const App = () => {
           );
         })}
       </Container>
+      <Link to="/profile/new">Home</Link>
     </div>
   );
 };
