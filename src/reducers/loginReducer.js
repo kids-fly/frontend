@@ -1,4 +1,4 @@
-import {LOGIN_START} from '../actions';
+import {LOGIN_START, LOGIN_SUCCESS} from '../actions';
 
 const initialState = {
   users: [],

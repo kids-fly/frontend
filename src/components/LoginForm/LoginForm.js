@@ -7,7 +7,7 @@ import {login} from '../../actions/Login';
 function LoginForm(props) {
   const [formState, setFormState] = useState({
     name: '',
-    email: '',
+
     password: ''
   });
 

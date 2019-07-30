@@ -5,7 +5,7 @@ export const login = user => dispatch => {
   console.log(user);
   dispatch({type: LOGIN_START});
   return axios
-    .post('https://kidsflyapi.herokuapp.com/login', user)
+    .post('https://kidsflyapi.herokuapp.com/api/auth/login', user)
     .then(res => {
       console.log(res);
       dispatch({type: LOGIN_SUCCESS, payload: res});

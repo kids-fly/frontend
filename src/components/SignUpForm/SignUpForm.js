@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import './SignUpForm.css';
 import {Link} from 'react-router-dom';
 
+import './SignUpForm.css';
 import {addUser} from '../../actions/Signup';
 
 function SignUpForm(props) {
