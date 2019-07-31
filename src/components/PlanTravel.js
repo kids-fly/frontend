@@ -13,24 +13,27 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
+const H1 = styled.h1`
+  font-family: "Serif ", "Georgia ";
+  text-shadow: 0 0 1px #ff0000, 0 0 2px #c5ecfd;
+`;
+
 function PlanTravel() {
   return (
     <div>
-      <h1>Plan Your Travel:</h1>
-      Schedule Your Flight:{" "}
+      <H1>Plan Your Travel</H1>
+      Schedule Your Flight:
       <Link to="/bookflight">
         <Button>Click</Button>
       </Link>
       <br />
       Traveliving With Kids:
       <Link to="/requestform">
-        {" "}
         <Button>Click</Button>
       </Link>
       <br />
       Unaccompanied Kids:
       <Link to="/requestform">
-        {" "}
         <Button>Click</Button>
       </Link>
     </div>
