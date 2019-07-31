@@ -4,6 +4,7 @@ import { Container } from "reactstrap";
 import { Route, Link } from "react-router-dom";
 import UserCard from "./UserCard";
 import uuidv1 from "uuid/v1";
+import Admin from "./admin/App"
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -33,7 +34,13 @@ const App = () => {
             return <ProfileForm {...props} initialPerson={foundUser} />;
           }}
         />
+        <Route
+          path="/admin/dashboard"
+          render={props => {
 
+            return <Admin {...props} />;
+          }}
+        />
         {users.map(user => {
           return (
             <Route

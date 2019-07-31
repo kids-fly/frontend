@@ -34,6 +34,7 @@ const UserCard = props => {
             </CardText>
           </CardBody>
         </Card>
+        <Link to="/admin/dashboard">Admin Dashboard</Link>
       </StyleCard>
     </div>
   );
