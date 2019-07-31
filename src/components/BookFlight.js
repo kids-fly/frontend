@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const BookStyle = styled.div`
   body {
@@ -162,6 +163,7 @@ function BookFlight() {
           >
             Search Flight
           </button>
+          <Link to="/">GO Back</Link>
         </form>
       </div>
     </BookStyle>
