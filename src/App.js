@@ -2,8 +2,11 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import LoginForm from './components/LoginForm/LoginForm';
 
-import './App.css';
+import RequestForm from "./components/RequestForm";
+import ProfileContainer from './components/ProfileContainer';
+
 import SignUpForm from './components/SignUpForm/SignUpForm';
+import './App.css';
 
 function App() {
   return (
@@ -13,7 +16,6 @@ function App() {
         <Route exact path='/signup' component={SignUpForm} />
       </div>
     </Router>
-  );
+  )
 }
-
 export default App;
