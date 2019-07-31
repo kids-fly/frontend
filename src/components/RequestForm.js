@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const FormStyle = styled.div`
   body {
@@ -119,7 +120,7 @@ function RequestForm() {
     <FormStyle>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <h2 className="login_title">Schedule Assistance Form</h2>
+          <h2 className="login_title">Assistance Request</h2>
           <input
             type="text"
             name="name"
@@ -169,6 +170,7 @@ function RequestForm() {
           >
             Submit Form
           </button>
+          <Link to="/">GO Back</Link>
         </form>
       </div>
     </FormStyle>
