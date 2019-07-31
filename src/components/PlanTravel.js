@@ -28,7 +28,7 @@ function PlanTravel() {
         <Button>Click</Button>
       </Link>
       <br />
-      Unaccompanied Minors:
+      Unaccompanied Kids:
       <Link to="/requestform">
         {" "}
         <Button>Click</Button>
