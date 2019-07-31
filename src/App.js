@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Switch, Route } from "react-router-dom";
 import RequestForm from "./components/RequestForm";
 import BookFlight from "./components/BookFlight";
+import PlanTravel from "./components/PlanTravel";
 
 import "./App.css";
 
@@ -14,6 +15,7 @@ function App() {
       </header>
       <Router>
         <Switch>
+          <Route exact path="/" component={PlanTravel} />
           <Route path="/requestform" component={RequestForm} />
           <Route path="/bookflight" component={BookFlight} />
         </Switch>
