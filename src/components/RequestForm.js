@@ -120,14 +120,6 @@ function RequestForm() {
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <h2 className="login_title">Schedule Assistance Form</h2>
-
-          <p>You are a....</p>
-          <input type="radio" id="father" />
-          <label for="father">Father</label>
-
-          <input type="radio" id="mother" />
-          <label for="mother">Mother</label>
-          <br />
           <input
             type="text"
             name="name"
