@@ -33,7 +33,7 @@ function PlanTravel() {
       </Link>
       <br />
       Unaccompanied Kids:
-      <Link to="/requestform">
+      <Link to="/minors">
         <Button>Click</Button>
       </Link>
     </div>

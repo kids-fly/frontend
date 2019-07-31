@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import RequestForm from "./components/RequestForm";
 import BookFlight from "./components/BookFlight";
 import PlanTravel from "./components/PlanTravel";
+import Minors from "./components/Minors";
 
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/" component={PlanTravel} />
           <Route path="/requestform" component={RequestForm} />
           <Route path="/bookflight" component={BookFlight} />
+          <Route path="/minors" component={Minors} />
         </Switch>
       </Router>
     </div>
