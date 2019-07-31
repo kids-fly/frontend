@@ -47,32 +47,27 @@ a {
 
 .bothsides {
   display: flex;
+  flex-direction: column;
   padding: 50px;
   align-content: center;
 }
 
-.arriving {
-       margin: 10px;
-    width: 400px;
-    background: white;
-    border-radius: 4px;
-    border: 1px solid HSL(0, 0%, 98%);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-    border-top: 3px solid #41ba90;
-    padding: 20px;
+
+
+.arrived {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
 }
 
-.departed {
-    margin: 10px;
-    width: 400px;
-    background: rgb(255, 254, 254);
-    border-radius: 4px;
-    border: 1px solid HSL(0, 0%, 98%);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-    border-top: 3px solid #41ba90;
-    padding: 20px;
+.departure {
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-
 .topTitle {
       padding: 20px;
     background-color: HSL(0, 0%, 98%);
@@ -80,18 +75,30 @@ a {
     margin: 0;
     font-size: 2rem;
     font-weight: bolder;
+    border-right: 10px solid white;
 }
 
+.middle {
+  margin-top: 40px;
+}
 .card {
-  padding: 10px;
-  margin-top: 10px;
-  border-bottom: 3px solid rgb(219, 219, 219);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 400px;
+    background: rgb(246, 246, 246);
+    border-radius: 4px;
+    border: 1px solid HSL(50%, 0%, 98%);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+    padding: 20px;
+    border-top: 3px solid #41ba90;
 }
 
 ul li {
   list-style-type: none;
-  line-height: 15px;
-  margin-bottom: 10px;
+  line-height: 8px;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 8px;
 }
 
 .admin {
@@ -101,4 +108,26 @@ ul li {
   flex-wrap: wrap;
   margin-top: 40px;
   
+}
+
+.sortArrived {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px;
+  font-size: 1.5rem;
+  align-items: baseline;
+}
+
+.sortBtn {
+  background-color: rgb(68, 165, 71); /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  margin-left: 10px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
 }

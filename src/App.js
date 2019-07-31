@@ -2,20 +2,25 @@ import React, { Component } from 'react';
 import Header from './components/admin/layout/Header'
 import './App.css';
 import Admin from './components/admin/Admin'
-import Arriving from './components/admin/Arriving'
-import Departed from './components/admin/Departed'
+import Arrived from './components/admin/Arrived'
+import Scheduled from './components/admin/Scheduled'
+import SortArrived from './components/admin/SortArrived'
+import SortDeparture from './components/admin/SortDeparture'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrivingUsers: [
+      arrivedUsers: [
         {
-          name: 'Duraan Ali',
-          phone: '6562165125',
+          name: 'John',
+          phone: '546541616',
           email: 'duraan@yahoo.com',
-          arrivingDate: '08/05/2019',
-          arrivingTime: '9:30PM',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
           childName: "Messy Jay"
         },
         {
@@ -23,27 +28,84 @@ class App extends Component {
           name: 'John',
           phone: '546541616',
           email: 'duraan@yahoo.com',
-          arrivingDate: '08/05/2019',
-          arrivingTime: '9:30PM',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
           childName: "Messy Jay"
         },
         {
 
-          name: 'James',
-          phone: '5684651',
+          name: 'John',
+          phone: '546541616',
           email: 'duraan@yahoo.com',
-          arrivingDate: '08/05/2019',
-          arrivingTime: '9:30PM',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
+          childName: "Messy Jay"
+        },
+        {
+
+          name: 'John',
+          phone: '546541616',
+          email: 'duraan@yahoo.com',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
+          childName: "Messy Jay"
+        },
+        {
+
+          name: 'John',
+          phone: '546541616',
+          email: 'duraan@yahoo.com',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
+          childName: "Messy Jay"
+        },
+        {
+
+          name: 'John',
+          phone: '546541616',
+          email: 'duraan@yahoo.com',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
+          childName: "Messy Jay"
+        },
+        {
+
+          name: 'John',
+          phone: '546541616',
+          email: 'duraan@yahoo.com',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
           childName: "Messy Jay"
         }
       ],
-      departedUsers: [
+      scheduledUsers: [
         {
-          name: 'Moses Jalo',
-          phone: '6562165125',
+          name: 'John',
+          phone: '546541616',
           email: 'duraan@yahoo.com',
-          arrivingDate: '08/05/2019',
-          arrivingTime: '9:30PM',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
           childName: "Messy Jay"
         },
         {
@@ -51,17 +113,23 @@ class App extends Component {
           name: 'John',
           phone: '546541616',
           email: 'duraan@yahoo.com',
-          arrivingDate: '08/05/2019',
-          arrivingTime: '9:30PM',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
           childName: "Messy Jay"
         },
         {
 
-          name: 'James',
-          phone: '5684651',
+          name: 'John',
+          phone: '546541616',
           email: 'duraan@yahoo.com',
-          arrivingDate: '08/05/2019',
-          arrivingTime: '9:30PM',
+          numberOfKids: 2,
+          arrivalDate: '08/05/2019',
+          arrivalTime: '9:30PM',
+          departureDate: '08/05/2019',
+          departureTime: '02:30PM',
           childName: "Messy Jay"
         }
       ],
@@ -85,13 +153,17 @@ class App extends Component {
         <div className="container">
 
           <div className="bothsides">
-            <div className="arriving">
-              <div className="topTitle">Arriving Customers</div>
-              <Arriving arrivingUsers={this.state.arrivingUsers} />
+
+            <div className="topTitle">Arrived Trips</div>
+            <SortArrived />
+            <div className="arrived">
+              <Arrived arrivedUsers={this.state.arrivedUsers} />
             </div>
-            <div className="departed">
-              <div className="topTitle">Departed Customers</div>
-              <Departed departedUsers={this.state.departedUsers} />
+            <div className="middle"></div>
+            <div className="topTitle">Upcoming Trips </div>
+            <SortDeparture />
+            <div className="departure">
+              <Scheduled scheduledUsers={this.state.scheduledUsers} />
             </div>
           </div>
         </div>
