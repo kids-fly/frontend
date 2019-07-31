@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const FormStyle = styled.div`
+const BookStyle = styled.div`
   body {
     width: 100%;
     height: 100%;
@@ -62,20 +62,7 @@ const FormStyle = styled.div`
     color: "white";
     width: 100%;
   }
-  ${"" /* input[type="radio"] {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-  } */}
 
-  label[for="father"],
-  label[for="mother"] {
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    padding: 0px;
-    font-size: 10px;
-  }
   button {
     background: rgb(176, 192, 150);
     text-align: center;
@@ -88,78 +75,84 @@ const FormStyle = styled.div`
   }
 `;
 
-function RequestForm() {
-  const [users, setUsers] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    flight: "",
-    arrivalTime: "",
-    numberOfKids: ""
+function BookFlight() {
+  const [flight, setFlight] = useState({
+    cityFrom: "",
+    cityTo: "",
+    depart: "",
+    timeOfdayD: "",
+    return: "",
+    timeOfdayR: ""
   });
 
   const handleChange = e => {
-    setUsers({ ...users, [e.target.name]: e.target.value });
+    setFlight({ ...flight, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    setUsers({
-      name: "",
-      email: "",
-      phoneNumber: "",
-      flight: "",
-      arrivalTime: "",
-      numberOfKids: ""
+    setFlight({
+      cityFrom: "",
+      cityTo: "",
+      depart: "",
+      timeOfdayD: "",
+      return: "",
+      timeOfdayR: ""
     });
   };
 
   return (
-    <FormStyle>
+    <BookStyle>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <h2 className="login_title">Schedule Assistance Form</h2>
+          <h2 className="login_title">Book Flight</h2>
+          <label>From:</label>
           <input
             type="text"
-            name="name"
-            placeholder="Enter your name"
-            value={users.name}
+            name="cityFrom"
+            placeholder="city"
+            value={flight.cityFrom}
             onChange={handleChange}
           />
+          <label>To:</label>
           <input
             type="text"
-            name="email"
-            placeholder="Enter your email"
-            value={users.email}
+            name="cityTo"
+            placeholder="city"
+            value={flight.cityTo}
             onChange={handleChange}
           />
+          <label>Depart:</label>
           <input
             type="text"
-            name="phoneNumber"
-            placeholder="Enter your Phone Number"
-            value={users.phoneNumber}
+            name="depart"
+            placeholder="select date"
+            value={flight.date}
             onChange={handleChange}
           />
+          <label>Time Of Day:</label>
           <input
             type="text"
-            name="flight"
-            placeholder="Enter your Flight Number"
-            value={users.flight}
+            name=" timeOfdayD"
+            placeholder="choose time"
+            value={flight.timeOfdayD}
             onChange={handleChange}
           />
+          <label>Return:</label>
           <input
             type="text"
-            name="arrivalTime"
-            placeholder="Enter your Arrival Time"
-            value={users.arrivalTime}
+            name="return"
+            placeholder="choose date"
+            value={flight.return}
             onChange={handleChange}
           />
+          <label>Time Of Day:</label>
           <input
-            type="number"
-            name="numberOfKids"
-            placeholder="Enter Number Of Kids"
-            value={users.numberOfKids}
+            type="text"
+            name="timeOfdayR"
+            placeholder="choose time"
+            value={flight.timeOfdayR}
             onChange={handleChange}
           />
           <button
@@ -167,12 +160,12 @@ function RequestForm() {
             onClick={handleSubmit}
             className="login_button"
           >
-            Submit Form
+            Search Flight
           </button>
         </form>
       </div>
-    </FormStyle>
+    </BookStyle>
   );
 }
 
-export default RequestForm;
+export default BookFlight;

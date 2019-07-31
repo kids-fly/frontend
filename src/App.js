@@ -1,14 +1,25 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import RequestForm from "./components/RequestForm";
+import BookFlight from "./components/BookFlight";
+import PlanTravel from "./components/PlanTravel";
+
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Form</h2>
+        <h2>kidsFly</h2>
       </header>
-      <RequestForm />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={PlanTravel} />
+          <Route path="/requestform" component={RequestForm} />
+          <Route path="/bookflight" component={BookFlight} />
+        </Switch>
+      </Router>
     </div>
   );
 }
