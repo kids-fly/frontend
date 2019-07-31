@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const MinorStyle = styled.div`
   body {
@@ -48,7 +48,7 @@ const MinorStyle = styled.div`
 
   h2 {
     font-family: "Serif ", "Georgia ";
-    text-shadow: 0 0 1px #ff0000, 0 0 2px #c5ecfd;
+    text-shadow: 0 0 1px #1ab31a; 0 0 2px #1ab31a;
   }
   input {
     display: flex;
@@ -58,27 +58,28 @@ const MinorStyle = styled.div`
     margin: 5px 0;
     background: transparent;
     border: 0px;
-    border-bottom: 2px solid #c5ecfd;
+    border-bottom: 2px solid #1ab31a;
     padding: 10px;
     color: "white";
-    width: 100%;
+    width: 80%;
   }
-  ${"" /* input[type="radio"] {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-  } */}
-
-  label[for="father"],
-  label[for="mother"] {
-    margin: 0;
+  select {
     display: flex;
-    flex-direction: row;
-    padding: 0px;
-    font-size: 10px;
+    flex-direction: column;
+    margin-right: 4%;
+    font-family: "Serif ", "Georgia ";
+    margin: 5px 0;
+    background: transparent;
+    border: 0px;
+    border-bottom: 2px solid #1ab31a;
+    padding: 10px;
+    color: "white";
+    width: 85%;
+    margin-bottom: 17px;
   }
+
   button {
-    background: rgb(176, 192, 150);
+    background: #1ab31a;
     text-align: center;
     padding: 5px;
     border-radius: 30px;
@@ -89,14 +90,13 @@ const MinorStyle = styled.div`
   }
 `;
 
-function Minors() {
+function Book() {
   const [users, setUsers] = useState({
-    name: "",
-
-    phoneNumber: "",
-    flight: "",
-    arrivalTime: "",
-    numberOfKids: ""
+    name: "Chris Ubani",
+    selectFlight: "Atlanta Flight No 007",
+    numberOfKids: "2",
+    selectDepartureAdmin: "Yes",
+    selectArrivalAdmin: "No"
   });
 
   const handleChange = e => {
@@ -108,10 +108,11 @@ function Minors() {
 
     setUsers({
       name: "",
-      phoneNumber: "",
-      flight: "",
-      arrivalTime: "",
-      numberOfKids: ""
+      selectFlight: "",
+      numberOfKids: "",
+
+      selectDepartureAdmin: "",
+      selectArrivalAdmin: ""
     });
   };
 
@@ -119,7 +120,8 @@ function Minors() {
     <MinorStyle>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <h2 className="login_title">Assistance For Minor's'</h2>
+          <h2 className="login_title">Book For Assistance</h2>
+
           <input
             type="text"
             name="name"
@@ -130,32 +132,25 @@ function Minors() {
 
           <input
             type="text"
-            name="phoneNumber"
-            placeholder="Enter your Phone Number"
-            value={users.phoneNumber}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="flight"
-            placeholder="Enter your Flight Number"
-            value={users.flight}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="arrivalTime"
-            placeholder="Enter your Arrival Time"
-            value={users.arrivalTime}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
             name="numberOfKids"
             placeholder="Enter Number Of Kids"
             value={users.numberOfKids}
             onChange={handleChange}
           />
+
+          <select name="selectFlight">
+            <option value="selectFlight">Select Flight </option>
+            <option value="selectFlight"> {users.selectFlight}</option>
+          </select>
+          <select name="selectDepartureAdmin">
+            <option value="selectDepartureAdmin">Select Departure Admin</option>
+            <option value="yes">{users.selectDepartureAdmin}</option>
+          </select>
+          <select name="selectArrivalAdmin">
+            <option value="selectArrivalAdmin">Select Arrival Admin</option>
+
+            <option value="no">{users.selectArrivalAdmin}</option>
+          </select>
           <button
             onSubmit={handleSubmit}
             onClick={handleSubmit}
@@ -163,11 +158,10 @@ function Minors() {
           >
             Submit Form
           </button>
-          <Link to="/">GO Back</Link>
         </form>
       </div>
     </MinorStyle>
   );
 }
 
-export default Minors;
+export default Book;
