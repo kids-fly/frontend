@@ -16,27 +16,26 @@ const StyleCard = styled.div`
 
 const UserCard = props => {
   console.log("PROPS IN USERCARD:", props);
-  console.log("PROPS.USER", props.user);
-  return (
-    <div>
-      <StyleCard>
-        <Card>
-          <CardBody>
-            <CardTitle>
-              Name: {props.user.firstName} {props.user.lastName}
-            </CardTitle>
-            <CardText>Phone Number: {props.user.phoneNumber}</CardText>
-            <CardSubtitle>Address: </CardSubtitle>
-            <CardText>
-              {props.user.street} <br />
-              {props.user.city}, {props.user.state} <br />
-              {props.user.zipCode}
-            </CardText>
-          </CardBody>
-        </Card>
-      </StyleCard>
-    </div>
-  );
+  return props.users.map(user => {
+    return (
+      <div>
+        <StyleCard>
+          <Card>
+            <CardBody>
+              <CardTitle>{user.firstName}</CardTitle>
+              <CardText>Phone Number: {user.phoneNumber}</CardText>
+              <CardSubtitle>Address: </CardSubtitle>
+              <CardText>
+                {user.street} <br />
+                {user.city}, {user.state} <br />
+                {user.zipCode}
+              </CardText>
+            </CardBody>
+          </Card>
+        </StyleCard>
+      </div>
+    );
+  });
 };
 
 export default UserCard;

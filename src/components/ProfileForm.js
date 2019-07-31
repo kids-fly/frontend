@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import UserCard from "./UserCard";
 
 const Title = styled.h3`
   color: green;
@@ -27,8 +29,8 @@ const ProfileForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(userInfo);
     props.addPerson(userInfo);
+
     setUserInfo({
       firstName: "",
       lastName: "",
@@ -38,12 +40,14 @@ const ProfileForm = props => {
       state: "",
       zipCode: ""
     });
+    console.log("USERS ", props);
   };
+  console.log("PROPS IN PROFILE FORM", props);
 
   return (
     <div>
       <Title>Great ! You signed up... Now lets get your profile setup.</Title>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={e => handleSubmit(e)}>
         <FormGroup>
           <Label for="firstName">First Name</Label>
           <Input
@@ -125,7 +129,10 @@ const ProfileForm = props => {
             onChange={handleChange}
           />
         </FormGroup>
-        <Button color="success">Submit</Button>
+
+        <Link to={`/profile/${props.users.id}`} color="success">
+          Submit
+        </Link>
       </Form>
     </div>
   );

@@ -5,7 +5,7 @@ import { Route, Link } from "react-router-dom";
 import UserCard from "./UserCard";
 import uuidv1 from "uuid/v1";
 
-const App = () => {
+const App = props => {
   const [users, setUsers] = useState([]);
 
   const addPerson = person => {
@@ -13,7 +13,6 @@ const App = () => {
     setUsers([...users, { ...person, id: id }]);
   };
 
-  console.log("USERS IN USERS ARRAY IN APP JS PASSES TO USERCARD", users);
   return (
     <div>
       <Container>
@@ -25,26 +24,12 @@ const App = () => {
           )}
         />
         <Route
-          path="/edit/:id"
-          render={props => {
-            const foundUser = users.find(
-              user => user.id === props.match.params.id
-            );
-            return <ProfileForm {...props} initialPerson={foundUser} />;
-          }}
+          exact
+          path={`/profile/:id`}
+          render={props => <UserCard {...props} users={users} />}
         />
-
-        {users.map(user => {
-          return (
-            <Route
-              exact
-              path="/profile/:id"
-              render={props => <UserCard {...props} user={user} />}
-            />
-          );
-        })}
+        <Link to="/profile/new">Home</Link>
       </Container>
-      <Link to="/profile/new">Home</Link>
     </div>
   );
 };
