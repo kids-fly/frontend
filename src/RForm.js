@@ -38,6 +38,9 @@ function RForm() {
 
   return (
     <div className="App">
+      <header className="App-header">
+        <h2>KidsFly</h2>
+      </header>
       <RequestForm
         users={users}
         setUsers={setUsers}
