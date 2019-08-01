@@ -30,15 +30,6 @@ const ProfileForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // props.addPerson(userInfo);
-    //props.setUsers({ userInfo });
-
-    // setUserInfo({
-    //   firstName: "",
-    //   lastName: "",
-    //   phoneNumber: "",
-    //   image_url: ""
-    // });
   };
 
   return (
