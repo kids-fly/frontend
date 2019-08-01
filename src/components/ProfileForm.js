@@ -110,7 +110,14 @@ const ProfileForm = props => {
         </FormGroup>
 
         <Link
-          style={{ marginTop: "20px", textDecoration: "none" }}
+          style={{
+            marginTop: "10px",
+            textDecoration: "none",
+            background: "blue",
+            color: "white",
+            padding: "10px",
+            borderRadius: "10px"
+          }}
           to={`/profile/${userInfo.id}`}
           onClick={props.setUsers(userInfo)}
           color="success"
