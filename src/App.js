@@ -6,6 +6,8 @@ import LoginForm from './components/LoginForm/LoginForm';
 import RequestForm from './components/RequestForm';
 import BookFlight from './components/BookFlight';
 import PlanTravel from './components/PlanTravel';
+import PrivateRoute from './utilities/PrivateRoute/PrivateRoute';
+import ProfileForm from './components/ProfileForm';
 
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import './App.css';
@@ -17,8 +19,9 @@ function App() {
         <Route exact path='/' component={LoginForm} />
         <Route exact path='/signup' component={SignUpForm} />
         <Route exact path='/plantravel' component={PlanTravel} />
-        <Route path='/requestform' component={RequestForm} />
+        <PrivateRoute exact path='/requestform' component={RequestForm} />
         <Route path='/bookflight' component={BookFlight} />
+        <PrivateRoute exact path='/profileForm' component={ProfileForm} />
       </div>
     </Router>
   );

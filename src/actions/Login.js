@@ -1,16 +1,17 @@
-import axios from 'axios';
-import {LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE} from './index';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from './index';
+import { axiosWithAuth } from '../utilities/axiosWithAuth/axiosWithAuth';
 
 export const login = user => dispatch => {
   console.log(user);
-  dispatch({type: LOGIN_START});
-  return axios
-    .post('https://kidsflyapi.herokuapp.com/api/auth/login', user)
+  dispatch({ type: LOGIN_START });
+  return axiosWithAuth()
+    .post('https://kidsflyapi.herokuapp.com/auth/login', user)
     .then(res => {
       console.log(res);
-      dispatch({type: LOGIN_SUCCESS, payload: res.data});
+      localStorage.setItem('token', res.data.token);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({type: LOGIN_FAILURE, payload: err});
+      dispatch({ type: LOGIN_FAILURE, payload: err });
     });
 };

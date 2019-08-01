@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const FormStyle = styled.div`
   body {
@@ -47,23 +47,23 @@ const FormStyle = styled.div`
   }
 
   h2 {
-    font-family: "Serif ", "Georgia ";
+    font-family: 'Serif ', 'Georgia ';
     text-shadow: 0 0 1px #ff0000, 0 0 2px #c5ecfd;
   }
   input {
     display: flex;
     flex-direction: column;
     margin-right: 4%;
-    font-family: "Serif ", "Georgia ";
+    font-family: 'Serif ', 'Georgia ';
     margin: 5px 0;
     background: transparent;
     border: 0px;
     border-bottom: 2px solid #c5ecfd;
     padding: 10px;
-    color: "white";
+    color: 'white';
     width: 100%;
   }
-  ${"" /* input[type="radio"] {
+  ${'' /* input[type="radio"] {
     opacity: 0;
     width: 0;
     margin: 0;
@@ -91,12 +91,12 @@ const FormStyle = styled.div`
 
 function RequestForm() {
   const [users, setUsers] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    flight: "",
-    arrivalTime: "",
-    numberOfKids: ""
+    name: '',
+    email: '',
+    phoneNumber: '',
+    flight: '',
+    arrivalTime: '',
+    numberOfKids: ''
   });
 
   const handleChange = e => {
@@ -107,70 +107,66 @@ function RequestForm() {
     e.preventDefault();
 
     setUsers({
-      name: "",
-      email: "",
-      phoneNumber: "",
-      flight: "",
-      arrivalTime: "",
-      numberOfKids: ""
+      name: '',
+      email: '',
+      phoneNumber: '',
+      flight: '',
+      arrivalTime: '',
+      numberOfKids: ''
     });
   };
 
   return (
     <FormStyle>
-      <div className="form-container">
+      <div className='form-container'>
         <form onSubmit={handleSubmit}>
-          <h2 className="login_title">Assistance Request</h2>
+          <h2 className='login_title'>Assistance Request</h2>
           <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
+            type='text'
+            name='name'
+            placeholder='Enter your name'
             value={users.name}
             onChange={handleChange}
           />
           <input
-            type="text"
-            name="email"
-            placeholder="Enter your email"
+            type='text'
+            name='email'
+            placeholder='Enter your email'
             value={users.email}
             onChange={handleChange}
           />
           <input
-            type="text"
-            name="phoneNumber"
-            placeholder="Enter your Phone Number"
+            type='text'
+            name='phoneNumber'
+            placeholder='Enter your Phone Number'
             value={users.phoneNumber}
             onChange={handleChange}
           />
           <input
-            type="text"
-            name="flight"
-            placeholder="Enter your Flight Number"
+            type='text'
+            name='flight'
+            placeholder='Enter your Flight Number'
             value={users.flight}
             onChange={handleChange}
           />
           <input
-            type="text"
-            name="arrivalTime"
-            placeholder="Enter your Arrival Time"
+            type='text'
+            name='arrivalTime'
+            placeholder='Enter your Arrival Time'
             value={users.arrivalTime}
             onChange={handleChange}
           />
           <input
-            type="number"
-            name="numberOfKids"
-            placeholder="Enter Number Of Kids"
+            type='number'
+            name='numberOfKids'
+            placeholder='Enter Number Of Kids'
             value={users.numberOfKids}
             onChange={handleChange}
           />
-          <button
-            onSubmit={handleSubmit}
-            onClick={handleSubmit}
-            className="login_button"
-          >
+          <button onSubmit={handleSubmit} className='login_button'>
             Submit Form
           </button>
-          <Link to="/">GO Back</Link>
+          <Link to='/'>GO Back</Link>
         </form>
       </div>
     </FormStyle>

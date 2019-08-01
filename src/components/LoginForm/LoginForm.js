@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {connect} from 'react-redux';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import './LoginForm.css';
-import {Link} from 'react-router-dom';
-import {login} from '../../actions/Login';
+import { Link } from 'react-router-dom';
+import { login } from '../../actions/Login';
 
 function LoginForm(props) {
   const [formState, setFormState] = useState({
@@ -19,7 +19,13 @@ function LoginForm(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.login(formState).then(() => props.history.push('/'));
+
+    props
+      .login(formState)
+      .then(
+        () => console.log('hello world'),
+        props.history.push('/profileForm')
+      );
     setFormState({
       username: '',
       password: ''
@@ -28,7 +34,9 @@ function LoginForm(props) {
 
   return (
     <div className='container login-form'>
-      <h2 className='dipslay-4 text-center py-5'>Enter your Login Information</h2>
+      <h2 className='dipslay-4 text-center py-5'>
+        Enter your Login Information
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label>Username</label>
@@ -72,5 +80,5 @@ function LoginForm(props) {
 
 export default connect(
   null,
-  {login}
+  { login }
 )(LoginForm);

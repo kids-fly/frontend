@@ -1,4 +1,4 @@
-import {SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAILURE} from '../actions';
+import { SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAILURE } from '../actions';
 
 const initialState = {
   users: [],
@@ -6,7 +6,7 @@ const initialState = {
   error: ''
 };
 
-export const signupReducer = (state = initialState, {type, payload}) => {
+export const signupReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SIGNUP_START:
       return {
