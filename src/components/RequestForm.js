@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 // import { Link } from "react-router-dom";
 
@@ -99,7 +99,11 @@ const MinorStyle = styled.div`
   }
 `;
 
-function RequestForm({ users, handleChange, handleSubmit }) {
+function RequestForm({ handleChange, handleSubmit }) {
+  const [user, setUser] = useState({
+    name: '',
+    numberOfKids: ''
+  });
   return (
     <MinorStyle>
       <div className='form-container'>
@@ -111,7 +115,7 @@ function RequestForm({ users, handleChange, handleSubmit }) {
             type='text'
             name='name'
             placeholder='Enter your name'
-            value={users.name}
+            value={user.name}
             onChange={handleChange}
           />
           <label>Number Of Kids</label>
@@ -119,7 +123,7 @@ function RequestForm({ users, handleChange, handleSubmit }) {
             type='text'
             name='numberOfKids'
             placeholder='Enter Number Of Kids'
-            value={users.numberOfKids}
+            value={user.numberOfKids}
             onChange={handleChange}
           />
           <label>Select Flight Information</label>

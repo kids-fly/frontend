@@ -8,6 +8,7 @@ import RequestForm from './components/RequestForm';
 import PrivateRoute from './utilities/PrivateRoute/PrivateRoute';
 import ProfileForm from './components/ProfileForm';
 
+import RForm from './components/RForm';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
         <Route exact path='/signup' component={SignUpForm} />
         <PrivateRoute path='/requestform' component={RequestForm} />
         <PrivateRoute exact path='/profileForm' component={ProfileForm} />
+        <PrivateRoute exact path='/rForm' component={RForm} />
       </div>
     </Router>
   );
