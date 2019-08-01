@@ -4,7 +4,7 @@ import RequestForm from "./components/RequestForm";
 
 import "./App.css";
 
-function App() {
+function RForm() {
   const [users, setUsers] = useState({});
 
   const [clients, setClients] = useState([]);
@@ -49,7 +49,7 @@ function App() {
       <div className="team-container">
         {clients.map((user, index) => (
           <div className="user-container" key={index}>
-            <h2>Confirm your Booking</h2>
+            <h2>Confirm your Request</h2>
             <h3>Name: {user.name}</h3>
             <h4>Flight Information: {user.selectFlight}</h4>
             <h4>Number Of Kids: {user.numberOfKids}</h4>
@@ -62,4 +62,4 @@ function App() {
   );
 }
 
-export default App;
+export default RForm;
