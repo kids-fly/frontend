@@ -17,9 +17,7 @@ function App() {
       <div className='App'>
         <Route exact path='/' component={LoginForm} />
         <Route exact path='/signup' component={SignUpForm} />
-
         <PrivateRoute path='/requestform' component={RequestForm} />
-
         <PrivateRoute exact path='/profileForm' component={ProfileForm} />
       </div>
     </Router>
