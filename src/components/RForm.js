@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-import RequestForm from "./components/RequestForm";
-
-import "./App.css";
+import RequestForm from "./RequestForm";
 
 function RForm() {
   const [users, setUsers] = useState({});
@@ -21,7 +19,7 @@ function RForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // saveArray();
+
     editMember();
     setUsers({
       name: "",
@@ -38,9 +36,6 @@ function RForm() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h2>KidsFly</h2>
-      </header>
       <RequestForm
         users={users}
         setUsers={setUsers}
