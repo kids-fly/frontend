@@ -52,6 +52,7 @@ const MinorStyle = styled.div`
   }
   input {
     display: flex;
+    align-content: center;
     flex-direction: column;
     margin-right: 4%;
     font-family: "Serif ", "Georgia ";
@@ -62,6 +63,14 @@ const MinorStyle = styled.div`
     padding: 10px;
     color: "white";
     width: 80%;
+  }
+
+  label{
+    font-style: italic;
+    background: lightgray;
+    text-shadow: 0 0 1px #1ab31a; 0 0 2px #1ab31a;
+    margin-top: 10px;
+    padding: 5px;
   }
   select {
     display: flex;
@@ -122,6 +131,7 @@ function Book() {
         <form onSubmit={handleSubmit}>
           <h2 className="login_title">Book For Assistance</h2>
 
+          <label>Name</label>
           <input
             type="text"
             name="name"
@@ -129,7 +139,7 @@ function Book() {
             value={users.name}
             onChange={handleChange}
           />
-
+          <label>Number Of Kids</label>
           <input
             type="text"
             name="numberOfKids"
@@ -137,15 +147,18 @@ function Book() {
             value={users.numberOfKids}
             onChange={handleChange}
           />
-
+          <label>Flight Infor.</label>
           <select name="selectFlight">
             <option value="selectFlight">Select Flight </option>
             <option value="selectFlight"> {users.selectFlight}</option>
           </select>
+          <label>Depart Admin</label>
           <select name="selectDepartureAdmin">
             <option value="selectDepartureAdmin">Select Departure Admin</option>
             <option value="yes">{users.selectDepartureAdmin}</option>
           </select>
+
+          <label>Arrival Admin</label>
           <select name="selectArrivalAdmin">
             <option value="selectArrivalAdmin">Select Arrival Admin</option>
 
