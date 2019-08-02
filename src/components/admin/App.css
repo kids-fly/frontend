@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.bothsides {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  align-content: center;
+}
+
+
+
+.arrived {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+.departure {
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.topTitle {
+      padding: 20px;
+    background-color: HSL(0, 0%, 98%);
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bolder;
+    border-right: 10px solid white;
+}
+
+.middle {
+  margin-top: 40px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 400px;
+    background: rgb(246, 246, 246);
+    border-radius: 4px;
+    border: 1px solid HSL(50%, 0%, 98%);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+    padding: 20px;
+    border-top: 3px solid #41ba90;
+}
+
+ul li {
+  list-style-type: none;
+  line-height: 8px;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 8px;
+}
+
+.admin {
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  
+}
+
+.sortArrived {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px;
+  font-size: 1.5rem;
+  align-items: baseline;
+}
+
+.sortBtn {
+  background-color: rgb(68, 165, 71); /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  margin-left: 10px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+}
