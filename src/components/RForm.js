@@ -13,35 +13,13 @@ function RForm() {
     setClientEdit({ ...user });
   };
 
-  const handleChange = event => {
-    setUsers({ ...users, [event.target.name]: event.target.value });
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    setUsers({
-      name: '',
-      selectFlight: '',
-      numberOfKids: '',
-      selectDepartureAdmin: '',
-      selectArrivalAdmin: ''
-    });
-  };
-
   function editMember() {
     setClients([...clients.filter(user => user.name !== users.name), users]);
   }
 
   return (
     <div className='App'>
-      <RequestForm
-        users={users}
-        setUsers={setUsers}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        clientEdit={clientEdit}
-      />
+      <RequestForm clientEdit={clientEdit} />
 
       <div className='team-container'>
         {clients.map((user, index) => (

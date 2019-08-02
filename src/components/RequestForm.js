@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { addRequest } from '../actions/requestForm';
+import { getFlights } from '../actions/getFlights';
+
 import styled from 'styled-components';
 // import { Link } from "react-router-dom";
 
@@ -99,36 +104,59 @@ const MinorStyle = styled.div`
   }
 `;
 
-function RequestForm({ handleChange, handleSubmit }) {
+function RequestForm(props) {
+  console.log(props);
   const [user, setUser] = useState({
-    name: '',
-    numberOfKids: ''
+    no_of_kids: '',
+    admin_on: '',
+    no_of_assigned_admins: ''
   });
+
+  const [flightInfo, setFlightInfo] = useState('');
+
+  useEffect(() => {
+    props.getFlights();
+    // setFlightInfo(props.flights);
+  }, []);
+
+  const handleChange = event => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(user);
+    props.addRequest(user);
+    setUser({
+      selectFlight: '',
+      no_of_kids: '',
+      admin_on: '',
+      no_of_assigned_admins: ''
+    });
+  };
   return (
     <MinorStyle>
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
           <h2 className='login_title'>Request For Assistance</h2>
 
-          <label>Name</label>
-          <input
-            type='text'
-            name='name'
-            placeholder='Enter your name'
-            value={user.name}
-            onChange={handleChange}
-          />
           <label>Number Of Kids</label>
           <input
-            type='text'
-            name='numberOfKids'
+            type='number'
+            name='no_of_kids'
             placeholder='Enter Number Of Kids'
             value={user.numberOfKids}
             onChange={handleChange}
           />
           <label>Select Flight Information</label>
           <select name='selectFlight' onChange={handleChange}>
-            <option value='' />
+            {flightInfo
+              ? flightInfo.map(flight => {
+                  return <option>{flight}</option>;
+                })
+              : false}
+
+            {/* <option value='' />
             <option value='ATL to LKM 5:25 am Flight # 213'>
               ATL to LKM 5:am Flight # 213
             </option>
@@ -143,20 +171,21 @@ function RequestForm({ handleChange, handleSubmit }) {
             </option>
             <option value='NYC to Nepal 11:27 am Flight # 652'>
               NYC to Nepal 5:am Flight # 652
-            </option>
+            </option> */}
           </select>
           <label>Do you need a Departure Admin?</label>
-          <select name='selectDepartureAdmin' onChange={handleChange}>
+          <select name='admin_on' onChange={handleChange}>
             <option value='' />
-            <option value='yes'>Yes</option>
-            <option value='no'>No</option>
+            <option value='departure'>Yes</option>
+            <option value='arrival'>No</option>
+            <option value='both'>No</option>
           </select>
 
-          <label>Do you need an Arrival Admin?</label>
-          <select name='selectArrivalAdmin' onChange={handleChange}>
+          <label>Number of assigned Admin?</label>
+          <select name='no_of_assigned_admins' onChange={handleChange}>
             <option value='' />
-            <option value='yes'>Yes</option>
-            <option value='no'>No</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
           </select>
 
           <button onClick={handleSubmit}>Submit</button>
@@ -166,4 +195,14 @@ function RequestForm({ handleChange, handleSubmit }) {
   );
 }
 
-export default RequestForm;
+const mapStateToProps = state => {
+  console.log(state.getFlightReducer.flights);
+  return {
+    flights: state.getFlightReducer.flights
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addRequest, getFlights }
+)(RequestForm);
