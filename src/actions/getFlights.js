@@ -1,5 +1,4 @@
 import { FLIGHT_START, FLIGHT_SUCCESS, FLIGHT_FAILURE } from './index';
-import axios from 'axios';
 import { axiosWithAuth } from '../utilities/axiosWithAuth/axiosWithAuth';
 
 export const getFlights = () => dispatch => {

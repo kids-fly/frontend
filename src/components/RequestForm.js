@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { addRequest } from '../actions/requestForm';
 import { getFlights } from '../actions/getFlights';
+// import GetFlights from './GetFlights';
 
 import styled from 'styled-components';
 // import { Link } from "react-router-dom";
@@ -116,7 +117,7 @@ function RequestForm(props) {
 
   useEffect(() => {
     props.getFlights();
-    // setFlightInfo(props.flights);
+    setFlightInfo(props.flights);
   }, []);
 
   const handleChange = event => {
@@ -178,7 +179,7 @@ function RequestForm(props) {
             <option value='' />
             <option value='departure'>Yes</option>
             <option value='arrival'>No</option>
-            <option value='both'>No</option>
+            <option value='both'>both</option>
           </select>
 
           <label>Number of assigned Admin?</label>
