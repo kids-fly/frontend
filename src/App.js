@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import LoginForm from './components/LoginForm/LoginForm';
-// import ProfileContainer from './components/ProfileContainer';
+import ProfileContainer from './components/ProfileContainer';
 import RequestForm from './components/RequestForm';
 
 import PrivateRoute from './utilities/PrivateRoute/PrivateRoute';
@@ -21,6 +21,11 @@ function App() {
         <PrivateRoute path='/requestform' component={RequestForm} />
         <PrivateRoute exact path='/profileForm' component={ProfileForm} />
         <PrivateRoute exact path='/rForm' component={RForm} />
+        <PrivateRoute
+          exact
+          path='/profilecontainer'
+          component={ProfileContainer}
+        />
       </div>
     </Router>
   );

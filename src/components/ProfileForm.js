@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
-import uuidv1 from 'uuid/v1';
 
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 import { addPerson } from '../actions/profileForm';
 import styled from 'styled-components';
-// const id = uuidv1();
 
 const Title = styled.h3`
   color: green;
@@ -23,7 +21,6 @@ const ProfileForm = props => {
     username: '',
     contact: '',
     image_url: ''
-    // id: id
   });
 
   const handleChange = e => {
@@ -32,7 +29,7 @@ const ProfileForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.addPerson(userInfo).then(() => props.history.push('/requestForm'));
+    props.addPerson(userInfo).then(() => props.history.push('/requestform'));
 
     setUserInfo({
       firstName: '',
@@ -118,8 +115,6 @@ const ProfileForm = props => {
             backgroundColor: 'orangered',
             color: 'white'
           }}
-          // to={`/profile/${userInfo.id}`}
-          // onClick={props.setUsers(userInfo)}
         >
           Submit
         </Button>
