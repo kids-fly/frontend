@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import RequestForm from "./RequestForm";
+import RequestForm from './RequestForm';
 
 function RForm() {
   const [users, setUsers] = useState({});
@@ -13,40 +13,17 @@ function RForm() {
     setClientEdit({ ...user });
   };
 
-  const handleChange = event => {
-    setUsers({ ...users, [event.target.name]: event.target.value });
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    editMember();
-    setUsers({
-      name: "",
-      selectFlight: "",
-      numberOfKids: "",
-      selectDepartureAdmin: "",
-      selectArrivalAdmin: ""
-    });
-  };
-
   function editMember() {
     setClients([...clients.filter(user => user.name !== users.name), users]);
   }
 
   return (
-    <div className="App">
-      <RequestForm
-        users={users}
-        setUsers={setUsers}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        clientEdit={clientEdit}
-      />
+    <div className='App'>
+      <RequestForm clientEdit={clientEdit} />
 
-      <div className="team-container">
+      <div className='team-container'>
         {clients.map((user, index) => (
-          <div className="user-container" key={index}>
+          <div className='user-container' key={index}>
             <h2>Confirm your Request</h2>
             <h3>Name: {user.name}</h3>
             <h4>Flight Information: {user.selectFlight}</h4>

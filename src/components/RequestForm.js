@@ -1,5 +1,12 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { addRequest } from '../actions/requestForm';
+import { getFlights } from '../actions/getFlights';
+import Navigation from './Page/Navigation';
+// import GetFlights from './GetFlights';
+
+import styled from 'styled-components';
 // import { Link } from "react-router-dom";
 
 const MinorStyle = styled.div`
@@ -55,7 +62,7 @@ const MinorStyle = styled.div`
     justify-content: center;
     flex-direction: column;
     margin-right: 4%;
-    font-family: "Serif ", "Georgia ";
+    font-family: 'Serif ', 'Georgia ';
     margin: 5px 0;
     background: transparent;
     border: 0px;
@@ -99,60 +106,89 @@ const MinorStyle = styled.div`
   }
 `;
 
-function RequestForm({ users, handleChange, handleSubmit }) {
+function RequestForm(props) {
+  console.log(props);
+  const [user, setUser] = useState({
+    no_of_kids: '',
+    admin_on: '',
+    no_of_assigned_admins: ''
+  });
+
+  const [flightInfo, setFlightInfo] = useState('');
+
+  useEffect(() => {
+    props.getFlights();
+    setFlightInfo(props.flights);
+  }, []);
+
+  const handleChange = event => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(user);
+    props.addRequest(user);
+    setUser({
+      selectFlight: '',
+      no_of_kids: '',
+      admin_on: '',
+      no_of_assigned_admins: ''
+    });
+  };
   return (
     <MinorStyle>
-      <div className="form-container">
+      <Navigation />
+      <div className='form-container'>
         <form onSubmit={handleSubmit}>
-          <h2 className="login_title">Request For Assistance</h2>
+          <h2 className='login_title'>Request For Assistance</h2>
 
-          <label>Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            value={users.name}
-            onChange={handleChange}
-          />
           <label>Number Of Kids</label>
           <input
-            type="text"
-            name="numberOfKids"
-            placeholder="Enter Number Of Kids"
-            value={users.numberOfKids}
+            type='number'
+            name='no_of_kids'
+            placeholder='Enter Number Of Kids'
+            value={user.numberOfKids}
             onChange={handleChange}
           />
           <label>Select Flight Information</label>
-          <select name="selectFlight" onChange={handleChange}>
-            <option value="" />
-            <option value="ATL to LKM 5:25 am Flight # 213">
+          <select name='selectFlight' onChange={handleChange}>
+            {flightInfo
+              ? flightInfo.map(flight => {
+                  return <option>{flight}</option>;
+                })
+              : false}
+
+            {/* <option value='' />
+            <option value='ATL to LKM 5:25 am Flight # 213'>
               ATL to LKM 5:am Flight # 213
             </option>
-            <option value="ATL to CBV 10:30 am Flight # 473">
+            <option value='ATL to CBV 10:30 am Flight # 473'>
               ATL to CBV 10:am Flight # 473
             </option>
-            <option value="LOS to UIJ 5:00 am Flight # 740">
+            <option value='LOS to UIJ 5:00 am Flight # 740'>
               LOS to UIJ 5:am Flight # 740
             </option>
-            <option value="BAL to CJH 4:20 pm Flight # 002">
+            <option value='BAL to CJH 4:20 pm Flight # 002'>
               BAL to CJH 4:20pm Flight # 002
             </option>
-            <option value="NYC to Nepal 11:27 am Flight # 652">
+            <option value='NYC to Nepal 11:27 am Flight # 652'>
               NYC to Nepal 5:am Flight # 652
-            </option>
+            </option> */}
           </select>
           <label>Do you need a Departure Admin?</label>
-          <select name="selectDepartureAdmin" onChange={handleChange}>
-            <option value="" />
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+          <select name='admin_on' onChange={handleChange}>
+            <option value='' />
+            <option value='departure'>Yes</option>
+            <option value='arrival'>No</option>
+            <option value='both'>both</option>
           </select>
 
-          <label>Do you need an Arrival Admin?</label>
-          <select name="selectArrivalAdmin" onChange={handleChange}>
-            <option value="" />
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+          <label>Number of assigned Admin?</label>
+          <select name='no_of_assigned_admins' onChange={handleChange}>
+            <option value='' />
+            <option value='1'>1</option>
+            <option value='2'>2</option>
           </select>
 
           <button onClick={handleSubmit}>Submit</button>
@@ -162,4 +198,14 @@ function RequestForm({ users, handleChange, handleSubmit }) {
   );
 }
 
-export default RequestForm;
+const mapStateToProps = state => {
+  console.log(state.getFlightReducer.flights);
+  return {
+    flights: state.getFlightReducer.flights
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addRequest, getFlights }
+)(RequestForm);

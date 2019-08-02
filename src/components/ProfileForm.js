@@ -1,7 +1,12 @@
-import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+
+import { connect } from 'react-redux';
+
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import Navigation from './Page/Navigation';
+
+import { addPerson } from '../actions/profileForm';
+import styled from 'styled-components';
 
 const Title = styled.h3`
   color: green;
@@ -12,13 +17,11 @@ const Title = styled.h3`
 
 const ProfileForm = props => {
   const [userInfo, setUserInfo] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    street: "",
-    city: "",
-    state: "",
-    zipCode: ""
+    firstname: '',
+    lastname: '',
+    username: '',
+    contact: '',
+    image_url: ''
   });
 
   const handleChange = e => {
@@ -27,108 +30,104 @@ const ProfileForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(userInfo);
-    props.addPerson(userInfo);
+    props
+      .addPerson(userInfo)
+      .then(() => props.history.push('/adminPostAirport'));
+
     setUserInfo({
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      street: "",
-      city: "",
-      state: "",
-      zipCode: ""
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      image_url: ''
     });
   };
 
   return (
     <div>
+      <Navigation />
       <Title>Great ! You signed up... Now lets get your profile setup.</Title>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        style={{ width: '50%', margin: '50px auto' }}
+      >
         <FormGroup>
-          <Label for="firstName">First Name</Label>
+          <Label for='firstname'>First Name</Label>
           <Input
-            className="form-control"
-            type="text"
-            name="firstName"
-            id="firstName"
-            placeholder="First Name..."
-            value={userInfo.firstName}
+            className='form-control'
+            type='text'
+            name='firstname'
+            id='firstname'
+            placeholder='First Name...'
+            value={userInfo.firstname}
             onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="lastName">Last Name</Label>
+          <Label for='lastname'>Last Name</Label>
           <Input
-            className="form-control"
-            type="text"
-            name="lastName"
-            id="lastName"
-            placeholder="Last Name..."
-            value={userInfo.lastName}
+            className='form-control'
+            type='text'
+            name='lastname'
+            id='lastname'
+            placeholder='Contact...'
+            value={userInfo.lastname}
             onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="phoneNumber">Phone Number</Label>
+          <Label for='username'>User Name</Label>
           <Input
-            className="form-control"
-            type="tel"
-            name="phoneNumber"
-            id="phoneNumber"
-            placeholder="1-(555)-555-5555"
-            value={userInfo.phoneNumber}
+            className='form-control'
+            type='text'
+            name='username'
+            id='username'
+            placeholder='Username...'
+            value={userInfo.username}
             onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="address">Address</Label>
+          <Label for='contact'>Contact</Label>
           <Input
-            className="form-control"
-            type="text"
-            name="street"
-            id="address"
-            placeholder="1234 Apple Tree St"
-            value={userInfo.street}
+            className='form-control'
+            type='tel'
+            name='contact'
+            id='contact'
+            placeholder='1-(555)-555-5555'
+            value={userInfo.contact}
             onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
+          <Label for='image_url'>Image Url</Label>
           <Input
-            className="form-control"
-            type="text"
-            name="city"
-            id="address"
-            placeholder="City"
-            value={userInfo.city}
+            className='form-control'
+            type='file'
+            name='image_url'
+            id='image_url'
+            placeholder='image...'
+            value={userInfo.image_url}
             onChange={handleChange}
           />
         </FormGroup>
-        <FormGroup>
-          <Input
-            className="form-control"
-            type="text"
-            name="state"
-            id="address"
-            placeholder="State"
-            value={userInfo.state}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            className="form-control"
-            type="text"
-            name="zipCode"
-            id="address"
-            placeholder="Zip Code"
-            value={userInfo.zipCode}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <Button color="success">Submit</Button>
+
+        <Button
+          style={{
+            marginTop: '20px',
+            textDecoration: 'none',
+            padding: '10px',
+            backgroundColor: 'orangered',
+            color: 'white'
+          }}
+        >
+          Submit
+        </Button>
       </Form>
     </div>
   );
 };
 
-export default ProfileForm;
+export default connect(
+  null,
+  { addPerson }
+)(ProfileForm);

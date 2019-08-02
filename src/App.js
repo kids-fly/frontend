@@ -1,19 +1,44 @@
-import React from "react";
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import RForm from "./components/RForm";
+import LoginForm from './components/LoginForm/LoginForm';
+import ProfileContainer from './components/ProfileContainer';
+import RequestForm from './components/RequestForm';
 
-import "./App.css";
+import PrivateRoute from './utilities/PrivateRoute/PrivateRoute';
+import ProfileForm from './components/ProfileForm';
+import Navigation from './components/Page/Navigation';
+
+import SignUpForm from './components/SignUpForm/SignUpForm';
+import AdminPostAirport from './components/AdminPostAirport';
+import AdminPage from './components/AdminPage';
+import ProfilePage from './components/ProfilPage';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>KidsFly</h2>
-      </header>
+    <Router>
+      <div className='App'>
+        <Route exact path='/' component={LoginForm} />
+        <Route exact path='/signup' component={SignUpForm} />
+        <PrivateRoute path='/requestform' component={RequestForm} />
+        <PrivateRoute exact path='/profileForm' component={ProfileForm} />
+        <PrivateRoute path='/navigation' component={Navigation} />
+        <PrivateRoute path='/admin' component={AdminPage} />
+        <PrivateRoute path='/profile' component={ProfilePage} />
 
-      <RForm />
-    </div>
+        <PrivateRoute
+          exact
+          path='/adminPostAirport'
+          component={AdminPostAirport}
+        />
+        <PrivateRoute
+          exact
+          path='/profilecontainer'
+          component={ProfileContainer}
+        />
+      </div>
+    </Router>
   );
 }
-
 export default App;
