@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { addRequest } from '../actions/requestForm';
 import { getFlights } from '../actions/getFlights';
+import Navigation from './Page/Navigation';
 // import GetFlights from './GetFlights';
 
 import styled from 'styled-components';
@@ -137,6 +138,7 @@ function RequestForm(props) {
   };
   return (
     <MinorStyle>
+      <Navigation />
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
           <h2 className='login_title'>Request For Assistance</h2>

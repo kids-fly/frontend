@@ -7,9 +7,11 @@ import RequestForm from './components/RequestForm';
 
 import PrivateRoute from './utilities/PrivateRoute/PrivateRoute';
 import ProfileForm from './components/ProfileForm';
+import Navigation from './components/Page/Navigation';
 
-import RForm from './components/RForm';
 import SignUpForm from './components/SignUpForm/SignUpForm';
+import AdminPostAirport from './components/AdminPostAirport';
+import AdminPage from './components/AdminPage';
 import './App.css';
 
 function App() {
@@ -20,7 +22,14 @@ function App() {
         <Route exact path='/signup' component={SignUpForm} />
         <PrivateRoute path='/requestform' component={RequestForm} />
         <PrivateRoute exact path='/profileForm' component={ProfileForm} />
-        <PrivateRoute exact path='/rForm' component={RForm} />
+        <PrivateRoute path='/navigation' component={Navigation} />
+        <PrivateRoute path='/admin' component={AdminPage} />
+
+        <PrivateRoute
+          exact
+          path='/adminPostAirport'
+          component={AdminPostAirport}
+        />
         <PrivateRoute
           exact
           path='/profilecontainer'

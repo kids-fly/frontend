@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { addAirport } from '../actions/addAirport';
+import { connect } from 'react-redux';
 
-const AdminPostAirport = () => {
+const AdminPostAirport = props => {
   const [airport, setAirport] = useState({
     arrivalAirport: '',
     departureAirport: ''
@@ -14,11 +16,11 @@ const AdminPostAirport = () => {
   };
 
   const handleSubmit = e => {
-      e.preventDefault();
-      addAirport(airport);
-  }
+    e.preventDefault();
+    props.addAirport(airport);
+  };
   return (
-    <div>
+    <div className='container py-5'>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label>Departure Airport</label>
@@ -26,18 +28,16 @@ const AdminPostAirport = () => {
             type='text'
             className='form-control'
             name='departureAirport'
-            placeholder='Password'
+            placeholder='Enter airport'
             onChange={handleChange}
           />
         </div>
         <div className='form-group'>
-          <label>Arrival Airport></label>
+          <label>Arrival Airport</label>
           <input
-            type='email'
             className='form-control'
             name='arrivalAirport'
-            aria-describedby='emailHelp'
-            placeholder='Enter email'
+            placeholder='Enter airport'
             onChange={handleChange}
           />
         </div>
@@ -50,4 +50,7 @@ const AdminPostAirport = () => {
   );
 };
 
-export default AdminPostAirport;
+export default connect(
+  null,
+  { addAirport }
+)(AdminPostAirport);

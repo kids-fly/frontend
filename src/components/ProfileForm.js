@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import Navigation from './Page/Navigation';
 
 import { addPerson } from '../actions/profileForm';
 import styled from 'styled-components';
@@ -29,7 +30,9 @@ const ProfileForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.addPerson(userInfo).then(() => props.history.push('/requestform'));
+    props
+      .addPerson(userInfo)
+      .then(() => props.history.push('/adminPostAirport'));
 
     setUserInfo({
       firstName: '',
@@ -41,6 +44,7 @@ const ProfileForm = props => {
 
   return (
     <div>
+      <Navigation />
       <Title>Great ! You signed up... Now lets get your profile setup.</Title>
       <Form
         onSubmit={handleSubmit}
