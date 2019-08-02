@@ -5,7 +5,8 @@ import { loginReducer } from './loginReducer';
 import { profileFormReducer } from './profileFormReducer';
 import { getFlightReducer } from './getFlightReducer';
 import { addAirportReducer } from './addAirportReducer';
-import {logoutReducer} from './logoutReducer';
+import { logoutReducer } from './logoutReducer';
+import { getProfile } from './getProfile';
 
 export default combineReducers({
   signupReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   profileFormReducer,
   getFlightReducer,
   addAirportReducer,
-  logoutReducer
+  logoutReducer,
+  getProfile
 });

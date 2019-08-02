@@ -8,11 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
 } from 'reactstrap';
 
 class Navigation extends React.Component {
@@ -40,6 +36,10 @@ class Navigation extends React.Component {
               <NavItem>
                 <NavLink href='/navigation'>Home</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href='/profile'>Profiles</NavLink>
+              </NavItem>
+              <NavItem />
               <NavItem>
                 <NavLink href='/requestForm/'>Request Form</NavLink>
               </NavItem>

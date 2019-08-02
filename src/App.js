@@ -12,6 +12,7 @@ import Navigation from './components/Page/Navigation';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import AdminPostAirport from './components/AdminPostAirport';
 import AdminPage from './components/AdminPage';
+import ProfilePage from './components/ProfilPage';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <PrivateRoute exact path='/profileForm' component={ProfileForm} />
         <PrivateRoute path='/navigation' component={Navigation} />
         <PrivateRoute path='/admin' component={AdminPage} />
+        <PrivateRoute path='/profile' component={ProfilePage} />
 
         <PrivateRoute
           exact
