@@ -23,8 +23,8 @@ function LoginForm(props) {
     props
       .login(formState)
       .then(
-        () => console.log('hello world'),
-        props.history.push('/profileForm')
+        () => props.history.push('/profileForm'),
+        
       );
     setFormState({
       username: '',
