@@ -22,7 +22,7 @@ function App() {
         <Route exact path='/' component={LoginForm} />
         <Route exact path='/signup' component={SignUpForm} />
         <PrivateRoute path='/requestform' component={RequestForm} />
-        <PrivateRoute exact path='/profileForm' component={ProfileForm} />
+        <PrivateRoute path='/profileForm' component={ProfileForm} />
         <PrivateRoute path='/navigation' component={Navigation} />
         <PrivateRoute path='/admin' component={AdminPage} />
         <PrivateRoute path='/profile' component={ProfilePage} />

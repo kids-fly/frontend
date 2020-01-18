@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 import './SignUpForm.css';
 import {addUser} from '../../actions/Signup';
-
+import axios from "axios"
 function SignUpForm(props) {
   const [formState, setFormState] = useState({
     username: '',
@@ -20,7 +20,14 @@ function SignUpForm(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.addUser(formState).then(() => props.history.push('/'));
+    axios
+      .post("https://kidsflyapi.herokuapp.com/auth/register", formState,
+      )
+      .then(res => {
+        console.log(res.data)
+        props.history.push('/');
+      })
+      .catch(err => console.log(err));
     setFormState({
       username: '',
       password: ''
