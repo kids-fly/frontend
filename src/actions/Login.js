@@ -2,6 +2,7 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from './index';
 import { axiosWithAuth } from '../utilities/axiosWithAuth/axiosWithAuth';
 
 export const login = user => dispatch => {
+  console.log("user", user );
   console.log(user);
   dispatch({ type: LOGIN_START });
   return axiosWithAuth()

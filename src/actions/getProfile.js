@@ -1,7 +1,7 @@
 import { PROFILE_START, PROFILE_SUCCESS, PROFILE_FAILURE } from './index';
 import { axiosWithAuth } from '../utilities/axiosWithAuth/axiosWithAuth';
 
-export const getProfile = state => dispatch => {
+export const getProfile = () => dispatch => {
   dispatch({ type: PROFILE_START });
   return axiosWithAuth()
     .get('https://kidsflyapi.herokuapp.com/user')
